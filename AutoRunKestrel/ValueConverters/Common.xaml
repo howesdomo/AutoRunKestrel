@@ -1,0 +1,43 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:valueConverter="clr-namespace:Client.ValueConverters;assembly=AutoRunKestrel">
+
+    <!--  转换器使用方式  -->
+    <!--  IsEnabled="{Binding BtnReload_IsEnabled, Converter={StaticResource ReverseBooleanConverter}}"  -->
+
+    <!--  最新更新日期 2024-05-14 11:03:34  -->
+    <!--  常用转换器  -->
+    <!--
+    <valueConverter:ByteArrayConverter x:Key="ByteArrayConverter" />
+    <valueConverter:ByteArrayShowNullConverter x:Key="ByteArrayShowNullConverter" />
+    <valueConverter:BrushConverter x:Key="BrushConverter" />
+    <valueConverter:CodeNameConverter x:Key="CodeNameConverter" />
+    <valueConverter:ColorConverter x:Key="ColorConverter" />
+    <valueConverter:DateConverter x:Key="DateConverter" />
+    <valueConverter:DateTimeConverter x:Key="DateTimeConverter" />
+    <valueConverter:DBNullConverter x:Key="DBNullConverter" />
+    <valueConverter:DBNullShowNullConverter x:Key="DBNullShowNullConverter" />
+    <valueConverter:ExpectFalse2CollapsedConverter x:Key="ExpectFalse2CollapsedConverter" />
+    <valueConverter:ExpectFalse2HiddenConverter x:Key="ExpectFalse2HiddenConverter" />
+    <valueConverter:ExpectNotNull2CollapsedConverter x:Key="ExpectNotNull2CollapsedConverter" />
+    <valueConverter:ExpectNotNull2HiddenConverter x:Key="ExpectNotNull2HiddenConverter" />
+    <valueConverter:ExpectNotNullConverter x:Key="ExpectNotNullConverter" />
+    <valueConverter:ExpectNull2CollapsedConverter x:Key="ExpectNull2CollapsedConverter" />
+    <valueConverter:ExpectNull2HiddenConverter x:Key="ExpectNull2HiddenConverter" />
+    <valueConverter:ExpectNullConverter x:Key="ExpectNullConverter" />
+    <valueConverter:ExpectTrue2CollapsedConverter x:Key="ExpectTrue2CollapsedConverter" />
+    <valueConverter:ExpectTrue2HiddenConverter x:Key="ExpectTrue2HiddenConverter" />
+    <valueConverter:HexStringAutoFixErrorConverter x:Key="HexStringAutoFixErrorConverter" />
+    <valueConverter:HexStringConverter x:Key="HexStringConverter" />
+    <valueConverter:MultiBindingConverter x:Key="MultiBindingConverter" />
+    <valueConverter:StringFormat_SplitByIntervalAndJoin_Converter x:Key="StringFormat_SplitByIntervalAndJoin_Converter" />
+    <valueConverter:StringFormat_SplitByIntervalAndJoin_Reverse_Converter x:Key="StringFormat_SplitByIntervalAndJoin_Reverse_Converter" />
+    <valueConverter:StringShowSpecialSymbolConverter x:Key="StringShowSpecialSymbolConverter" />
+    <valueConverter:Uri2ImageSourceConverter x:Key="Uri2ImageSourceConverter" />
+    <valueConverter:UserCodeNameValueConvert x:Key="UserCodeNameValueConvert" />
+    <valueConverter:ReverseBooleanConverter x:Key="ReverseBooleanConverter" />
+    -->
+  
+  
+</ResourceDictionary>

@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="Client.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Client"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:Client.Components"
+    xmlns:valueconverters="clr-namespace:Client.ValueConverters"
+    xmlns:vm="clr-namespace:Client.ViewModel"
+    x:Name="thisFrm"
+    Width="800"
+    Height="450"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <vm:MainWindow_ViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <valueconverters:ReverseBooleanConverter x:Key="ReverseBooleanConverter" />
+        <valueconverters:ExpectTrue2CollapsedConverter x:Key="ExpectTrue2CollapsedConverter" />
+        <valueconverters:ExpectFalse2CollapsedConverter x:Key="ExpectFalse2CollapsedConverter" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <ListBox x:Name="ucConsole"></ListBox>
+
+        <Button
+            Grid.Row="2"
+            Height="120"
+            Command="{Binding CMD_Run}"
+            Content="Run"
+            IsEnabled="{Binding IsRunning, Converter={StaticResource ReverseBooleanConverter}}"
+            Visibility="{Binding IsRunning, Converter={StaticResource ExpectTrue2CollapsedConverter}}" />
+
+        <Button
+            Grid.Row="3"
+            Height="120"
+            Command="{Binding CMD_Stop}"
+            Content="Stop"
+            IsEnabled="{Binding IsRunning}"
+            Visibility="{Binding IsRunning, Converter={StaticResource ExpectFalse2CollapsedConverter}}" />
+
+        <ui:UcAutoStartup
+            Key="dotnetHostClient"
+            Grid.Row="4" />
+    </Grid>
+</Window>
