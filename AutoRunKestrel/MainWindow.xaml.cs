@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +27,7 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
-            this.Title = $".net Host Client - V {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+            this.Title = $"AutoRunKestrel - V {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
             this.initEvent();
         }
         void initEvent()
@@ -199,6 +201,18 @@ namespace Client.ViewModel
             {
                 Console.WriteLine(line);
 
+                if (IsAutoRunSuccess == false)
+                {
+                    if (Regex.IsMatch(line, RunSuccessPattern) == true)
+                    {
+                        IsAutoRunSuccess = true;
+                        using (var w = new WebClient())
+                        {
+                            w.DownloadStringAsync(new Uri("http://localhost:8081/")); // TODO 配置
+                        }
+                    }
+                }
+
                 AutoRunKestrel.App.BeginInvokeOnMainThread(() =>
                 {
                     this.mUcConsole.Items.Add(line);
@@ -209,6 +223,22 @@ namespace Client.ViewModel
             mProcess.WaitForExit();
             mProcess.Close();
             mProcess = null;
+        }
+
+        /// <summary>
+        /// 有 Ctrl+C to Shun down 字眼标识服务成功运行
+        /// </summary>
+        const string RunSuccessPattern = "Ctrl\\+C"; // !!!遇到的坑!!! + 号需要转换
+
+        private bool _IsAutoRunSuccess;
+        public bool IsAutoRunSuccess
+        {
+            get { return _IsAutoRunSuccess; }
+            set
+            {
+                _IsAutoRunSuccess = value;
+                this.OnPropertyChanged(nameof(IsAutoRunSuccess));
+            }
         }
 
 
